@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +50,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,43 +62,63 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Manage Reservation Window.cs">
+    <Compile Include="ArtistLogInDatabaseDataSet.cs">
+      <DependentUpon>ArtistLogInDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ArtistLogInDatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArtistLogInDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Manage Reservation Window.Designer.cs">
-      <DependentUpon>Manage Reservation Window.cs</DependentUpon>
+    <Compile Include="MainMenuForm.Designer.cs">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Log In Window.cs">
+    <Compile Include="MainMenuFormAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Log In Window.Designer.cs">
-      <DependentUpon>Log In Window.cs</DependentUpon>
+    <Compile Include="MainMenuFormAdmin.Designer.cs">
+      <DependentUpon>MainMenuFormAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reservation Form.cs">
+    <Compile Include="ReservationFormManage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reservation Form.Designer.cs">
-      <DependentUpon>Reservation Form.cs</DependentUpon>
+    <Compile Include="ReservationFormManage.Designer.cs">
+      <DependentUpon>ReservationFormManage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main Menu Form.cs">
+    <Compile Include="LogInWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main Menu Form.Designer.cs">
-      <DependentUpon>Main Menu Form.cs</DependentUpon>
+    <Compile Include="LogInWindow.Designer.cs">
+      <DependentUpon>LogInWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReservationFormCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReservationFormCreate.Designer.cs">
+      <DependentUpon>ReservationFormCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Main Menu Form.resx">
-      <DependentUpon>Main Menu Form.cs</DependentUpon>
+    <EmbeddedResource Include="LogInWindow.aa.resx">
+      <DependentUpon>LogInWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Log In Window.resx">
-      <DependentUpon>Log In Window.cs</DependentUpon>
+    <EmbeddedResource Include="MainMenuForm.resx">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Manage Reservation Window.resx">
-      <DependentUpon>Manage Reservation Window.cs</DependentUpon>
+    <EmbeddedResource Include="MainMenuFormAdmin.resx">
+      <DependentUpon>MainMenuFormAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reservation Form.resx">
-      <DependentUpon>Reservation Form.cs</DependentUpon>
+    <EmbeddedResource Include="LogInWindow.resx">
+      <DependentUpon>LogInWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReservationFormManage.resx">
+      <DependentUpon>ReservationFormManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReservationFormCreate.resx">
+      <DependentUpon>ReservationFormCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -93,6 +129,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ArtistLogInDatabaseDataSet.xsc">
+      <DependentUpon>ArtistLogInDatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ArtistLogInDatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ArtistLogInDatabaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ArtistLogInDatabaseDataSet.xss">
+      <DependentUpon>ArtistLogInDatabaseDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -105,6 +152,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ArtistLogInDatabase.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArtistLogInDatabase_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>ArtistLogInDatabase.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

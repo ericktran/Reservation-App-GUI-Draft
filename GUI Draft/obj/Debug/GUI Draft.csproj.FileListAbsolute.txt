@@ -1,0 +1,19 @@
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\GUI_Draft.MainMenuForm.resources
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\GUI_Draft.AdminMenu.resources
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\GUI_Draft.LogIn.resources
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\GUI_Draft.Properties.Resources.resources
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\GUI Draft.csproj.GenerateResource.cache
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\GUI Draft.csproj.CoreCompileInputs.cache
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\bin\Debug\GUI Draft.exe.config
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\bin\Debug\GUI Draft.exe
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\bin\Debug\GUI Draft.pdb
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\GUI Draft.csprojAssemblyReference.cache
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\GUI Draft.exe
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\GUI Draft.pdb
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\GUI_Draft.CreateReservationForm.resources
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\bin\Debug\aa\GUI Draft.resources.dll
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\GUI_Draft.ManageReservationForm.resources
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\GUI_Draft.LogIn.aa.resources
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\aa\GUI Draft.resources.dll
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\bin\Debug\ArtistLogInDatabase.mdf
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\bin\Debug\ArtistLogInDatabase_log.ldf
