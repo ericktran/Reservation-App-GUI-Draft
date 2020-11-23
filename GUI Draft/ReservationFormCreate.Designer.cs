@@ -48,6 +48,7 @@
             this.SubmitReservation.TabIndex = 0;
             this.SubmitReservation.Text = "Reserve";
             this.SubmitReservation.UseVisualStyleBackColor = true;
+            this.SubmitReservation.Click += new System.EventHandler(this.SubmitReservation_Click);
             // 
             // ArtistNameText
             // 

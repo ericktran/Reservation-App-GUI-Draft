@@ -13,7 +13,13 @@ namespace GUI_Draft
 {
     public partial class CreateReservationForm : Form
     {
-        bool AdminCheck;
+        bool adminCheck;
+        DateTime showDateTime;
+        String showDate;
+        String showTime;
+        String venue;
+        String artist;
+
         public CreateReservationForm()
         {
             InitializeComponent();
@@ -22,7 +28,7 @@ namespace GUI_Draft
         private void MainMenu_Click(object sender, EventArgs e)
         {
             this.Hide();
-            if (AdminCheck == true)
+            if (adminCheck == true)
             {
                 AdminMenu adminMenu = new AdminMenu();
                 adminMenu.Show();
@@ -34,14 +40,15 @@ namespace GUI_Draft
             }
         }
 
-        private void DateOfShow_DateChanged(object sender, DateRangeEventArgs e)
+        public void DateOfShow_DateChanged(object sender, DateRangeEventArgs e)
         {
-            DateTime showdate = DateOfShow.SelectionStart;
+            showDateTime = DateOfShow.SelectionStart;
+            showDate = showDateTime.ToShortDateString();
         }
 
-        private void TimeDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        public void TimeDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String showTime = TimeDropDown.SelectedItem.ToString();
+            showTime = TimeDropDown.SelectedItem.ToString();
         }
 
         private void CreateReservationForm_Load(object sender, EventArgs e)
@@ -49,12 +56,20 @@ namespace GUI_Draft
             
             if (LogIn.UsernameLabelTxt == "Admin" || LogIn.UsernameLabelTxt == "admin")
             {
-                AdminCheck = true;
+                adminCheck = true;
             }
             else
             {
-                AdminCheck = false;
+                adminCheck = false;
             }
+        }
+        private void SubmitReservation_Click(object sender, EventArgs e)
+        {
+            artist = ArtistNameText.Text;
+            venue = VenueNameTxt.Text;
+            MessageBox.Show(string.Format("{0} {1} {2} {3}", artist, venue, showDate, showTime), "Reservation Confirmation", MessageBoxButtons.OK);
+
+            //To be continued Plan is to import data into database and have it approved then stored.
         }
     }
 }

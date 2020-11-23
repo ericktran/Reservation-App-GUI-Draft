@@ -16,5 +16,12 @@ namespace GUI_Draft
         {
             InitializeComponent();
         }
+
+        private void ManageReservationForm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'artistLogInDatabaseDataSet.LoginInfo' table. You can move, or remove it, as needed.
+            this.loginInfoTableAdapter.Fill(this.artistLogInDatabaseDataSet.LoginInfo);
+
+        }
     }
 }
