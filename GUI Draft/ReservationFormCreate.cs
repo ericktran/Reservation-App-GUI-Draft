@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace GUI_Draft
 {
@@ -19,6 +20,7 @@ namespace GUI_Draft
         String showTime;
         String venue;
         String artist;
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C: \Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf;Integrated Security=True;Connect Timeout=30");
 
         public CreateReservationForm()
         {
@@ -65,10 +67,15 @@ namespace GUI_Draft
         }
         private void SubmitReservation_Click(object sender, EventArgs e)
         {
+            con.Open();
             artist = ArtistNameText.Text;
             venue = VenueNameTxt.Text;
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "Insert into PendingReservations values('" + artist +"','" + venue + "','"+ showDate + "','"+ showTime +"')";
+            cmd.ExecuteNonQuery();
             MessageBox.Show(string.Format("{0} {1} {2} {3}", artist, venue, showDate, showTime), "Reservation Confirmation", MessageBoxButtons.OK);
-
+            con.Close();
             //To be continued Plan is to import data into database and have it approved then stored.
         }
     }

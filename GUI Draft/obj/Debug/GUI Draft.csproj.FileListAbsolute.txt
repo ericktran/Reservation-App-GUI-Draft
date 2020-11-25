@@ -16,3 +16,4 @@ C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\GUI_Draft.LogIn.aa.resour
 C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\aa\GUI Draft.resources.dll
 C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\bin\Debug\ArtistLogInDatabase.mdf
 C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\bin\Debug\ArtistLogInDatabase_log.ldf
+C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\obj\Debug\GUI Draft.csprojAssemblyReference.cache

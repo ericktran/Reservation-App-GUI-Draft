@@ -26,20 +26,20 @@ namespace GUI_Draft
         {
             UsernameLabelTxt = UsernameTxt.Text;
             test2 = PasswordTxt.Text;
-           /* SqlConnection sqlConnection = default(SqlConnection);
-            sqlConnection = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf; Integrated Security = True; Connect Timeout = 30");
-           
-            SqlCommand sqlCommand = default(SqlCommand);
-            sqlConnection.Open();
-            sqlCommand = new SqlCommand("SELECT Username,Password FROM LoginInfo WHERE Username = @Username AND Password = @Password");
-            //string query = "Select* from LoginInfo where Username ='" + UsernameTxt.Text.Trim() + "' and Password ='" + PasswordTxt.Text.Trim() + "'";
-            SqlParameter uName = new SqlParameter("@Username", SqlDbType.VarChar);
-            SqlParameter uPassword = new SqlParameter("@Password", SqlDbType.VarChar);
+            /* SqlConnection sqlConnection = default(SqlConnection);
+             sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf;Integrated Security=True;Connect Timeout=30");
 
-            sqlCommand.Parameters.Add(uName);
-            sqlCommand.Parameters.Add(uPassword);
-            SqlDataReader dataReader = sqlCommand.ExecuteReader();
-            if (dataReader.HasRows)*/
+             SqlCommand sqlCommand = default(SqlCommand);
+             sqlConnection.Open();
+             sqlCommand = new SqlCommand("SELECT Username,Password FROM LoginInfo WHERE Username = @Username AND Password = @Password");
+             //string query = "Select* from LoginInfo where Username ='" + UsernameTxt.Text.Trim() + "' and Password ='" + PasswordTxt.Text.Trim() + "'";
+             SqlParameter uName = new SqlParameter("@Username", SqlDbType.VarChar);
+             SqlParameter uPassword = new SqlParameter("@Password", SqlDbType.VarChar);
+
+             sqlCommand.Parameters.Add(uName);
+             sqlCommand.Parameters.Add(uPassword);
+             SqlDataReader dataReader = sqlCommand.ExecuteReader();
+             if (dataReader.HasRows)*/
             if (UsernameTxt.Text == "admin" && PasswordTxt.Text == "admin")
             {
                 this.Hide();

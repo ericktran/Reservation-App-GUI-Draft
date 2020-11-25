@@ -29,104 +29,97 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.UpdateDataButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.MainMenuButton = new System.Windows.Forms.Button();
+            this.ApprovedReservationDataGrid = new System.Windows.Forms.DataGridView();
             this.artistLogInDatabaseDataSet = new GUI_Draft.ArtistLogInDatabaseDataSet();
-            this.artistLogInDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.loginInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.loginInfoTableAdapter = new GUI_Draft.ArtistLogInDatabaseDataSetTableAdapters.LoginInfoTableAdapter();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.eventReservationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eventReservationTableAdapter = new GUI_Draft.ArtistLogInDatabaseDataSetTableAdapters.EventReservationTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.ApprovedReservationDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.artistLogInDatabaseDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.artistLogInDatabaseDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loginInfoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventReservationBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // UpdateDataButton
             // 
-            this.button1.Location = new System.Drawing.Point(619, 164);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Update";
-            this.button1.UseVisualStyleBackColor = true;
+            this.UpdateDataButton.Location = new System.Drawing.Point(1214, 701);
+            this.UpdateDataButton.Name = "UpdateDataButton";
+            this.UpdateDataButton.Size = new System.Drawing.Size(75, 23);
+            this.UpdateDataButton.TabIndex = 0;
+            this.UpdateDataButton.Text = "Update";
+            this.UpdateDataButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // DeleteButton
             // 
-            this.button2.Location = new System.Drawing.Point(619, 217);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
+            this.DeleteButton.Location = new System.Drawing.Point(1214, 754);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteButton.TabIndex = 1;
+            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // MainMenuButton
             // 
-            this.button3.Location = new System.Drawing.Point(619, 272);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Main Menu";
-            this.button3.UseVisualStyleBackColor = true;
+            this.MainMenuButton.Location = new System.Drawing.Point(1214, 809);
+            this.MainMenuButton.Name = "MainMenuButton";
+            this.MainMenuButton.Size = new System.Drawing.Size(75, 23);
+            this.MainMenuButton.TabIndex = 2;
+            this.MainMenuButton.Text = "Main Menu";
+            this.MainMenuButton.UseVisualStyleBackColor = true;
+            this.MainMenuButton.Click += new System.EventHandler(this.MainMenuButton_Click);
+            // 
+            // ApprovedReservationDataGrid
+            // 
+            this.ApprovedReservationDataGrid.AllowUserToDeleteRows = false;
+            this.ApprovedReservationDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ApprovedReservationDataGrid.Location = new System.Drawing.Point(12, 44);
+            this.ApprovedReservationDataGrid.Name = "ApprovedReservationDataGrid";
+            this.ApprovedReservationDataGrid.Size = new System.Drawing.Size(1142, 789);
+            this.ApprovedReservationDataGrid.TabIndex = 3;
             // 
             // artistLogInDatabaseDataSet
             // 
             this.artistLogInDatabaseDataSet.DataSetName = "ArtistLogInDatabaseDataSet";
             this.artistLogInDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // artistLogInDatabaseDataSetBindingSource
+            // eventReservationBindingSource
             // 
-            this.artistLogInDatabaseDataSetBindingSource.DataSource = this.artistLogInDatabaseDataSet;
-            this.artistLogInDatabaseDataSetBindingSource.Position = 0;
+            this.eventReservationBindingSource.DataMember = "EventReservation";
+            this.eventReservationBindingSource.DataSource = this.artistLogInDatabaseDataSet;
             // 
-            // loginInfoBindingSource
+            // eventReservationTableAdapter
             // 
-            this.loginInfoBindingSource.DataMember = "LoginInfo";
-            this.loginInfoBindingSource.DataSource = this.artistLogInDatabaseDataSetBindingSource;
-            // 
-            // loginInfoTableAdapter
-            // 
-            this.loginInfoTableAdapter.ClearBeforeFill = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(143, 107);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 3;
+            this.eventReservationTableAdapter.ClearBeforeFill = true;
             // 
             // ManageReservationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1323, 865);
+            this.Controls.Add(this.ApprovedReservationDataGrid);
+            this.Controls.Add(this.MainMenuButton);
+            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.UpdateDataButton);
             this.Name = "ManageReservationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Reservation";
             this.Load += new System.EventHandler(this.ManageReservationForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.ApprovedReservationDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.artistLogInDatabaseDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.artistLogInDatabaseDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loginInfoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventReservationBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.BindingSource artistLogInDatabaseDataSetBindingSource;
+        private System.Windows.Forms.Button UpdateDataButton;
+        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.Button MainMenuButton;
+        private System.Windows.Forms.DataGridView ApprovedReservationDataGrid;
         private ArtistLogInDatabaseDataSet artistLogInDatabaseDataSet;
-        private System.Windows.Forms.BindingSource loginInfoBindingSource;
-        private ArtistLogInDatabaseDataSetTableAdapters.LoginInfoTableAdapter loginInfoTableAdapter;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource eventReservationBindingSource;
+        private ArtistLogInDatabaseDataSetTableAdapters.EventReservationTableAdapter eventReservationTableAdapter;
     }
 }
