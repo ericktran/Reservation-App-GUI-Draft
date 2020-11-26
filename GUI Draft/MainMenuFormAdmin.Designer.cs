@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.UsernameLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.CreateReservation = new System.Windows.Forms.Button();
             this.ManageReservation = new System.Windows.Forms.Button();
@@ -36,14 +36,14 @@
             this.ApproveReservation = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // UsernameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Username";
+            this.UsernameLabel.AutoSize = true;
+            this.UsernameLabel.Location = new System.Drawing.Point(28, 55);
+            this.UsernameLabel.Name = "UsernameLabel";
+            this.UsernameLabel.Size = new System.Drawing.Size(55, 13);
+            this.UsernameLabel.TabIndex = 0;
+            this.UsernameLabel.Text = "Username";
             // 
             // button1
             // 
@@ -104,10 +104,11 @@
             this.Controls.Add(this.ManageReservation);
             this.Controls.Add(this.CreateReservation);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.UsernameLabel);
             this.Name = "AdminMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Menu";
+            this.Load += new System.EventHandler(this.AdminMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,7 +116,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label UsernameLabel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button CreateReservation;
         private System.Windows.Forms.Button ManageReservation;

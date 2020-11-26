@@ -14,7 +14,6 @@ namespace GUI_Draft
     public partial class LogIn : Form
     {
         public static string UsernameLabelTxt = "";
-        public static string test2 = "";
 
         public LogIn()
         {
@@ -25,38 +24,35 @@ namespace GUI_Draft
         private void LogInButton_Click(object sender, EventArgs e)
         {
             UsernameLabelTxt = UsernameTxt.Text;
-            test2 = PasswordTxt.Text;
-            /* SqlConnection sqlConnection = default(SqlConnection);
-             sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+            con.Open();
+            String query = "Select ArtistID, ArtistPassword FROM dbo.Artist WHERE ArtistID = '" + UsernameTxt.Text.Trim() + "' AND ArtistPassword = '" + PasswordTxt.Text.Trim() + "'";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, con);
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            String queryAdmin = "Select EmployeeID, EmployeePassword FROM dbo.Employee WHERE EmployeeID = '" + UsernameTxt.Text.Trim() + "' AND EmployeePassword = '" + PasswordTxt.Text.Trim() + "'";
+            SqlDataAdapter sqlDataAdapterAdmin = new SqlDataAdapter(queryAdmin, con);
+            DataTable dataTableAdmin = new DataTable();
+            sqlDataAdapterAdmin.Fill(dataTableAdmin);
 
-             SqlCommand sqlCommand = default(SqlCommand);
-             sqlConnection.Open();
-             sqlCommand = new SqlCommand("SELECT Username,Password FROM LoginInfo WHERE Username = @Username AND Password = @Password");
-             //string query = "Select* from LoginInfo where Username ='" + UsernameTxt.Text.Trim() + "' and Password ='" + PasswordTxt.Text.Trim() + "'";
-             SqlParameter uName = new SqlParameter("@Username", SqlDbType.VarChar);
-             SqlParameter uPassword = new SqlParameter("@Password", SqlDbType.VarChar);
-
-             sqlCommand.Parameters.Add(uName);
-             sqlCommand.Parameters.Add(uPassword);
-             SqlDataReader dataReader = sqlCommand.ExecuteReader();
-             if (dataReader.HasRows)*/
-            if (UsernameTxt.Text == "admin" && PasswordTxt.Text == "admin")
-            {
-                this.Hide();
-                AdminMenu NewMenu = new AdminMenu();
-                NewMenu.Show();
-            }
-            else if (UsernameTxt.Text == "test" && PasswordTxt.Text == "test")
+            if (dataTable.Rows.Count == 1)
             {
                 this.Hide();
                 MainMenuForm TestMenu = new MainMenuForm();
                 TestMenu.Show();
             }
+            else if (dataTableAdmin.Rows.Count == 1)
+            {
+                this.Hide();
+                AdminMenu NewMenu = new AdminMenu();
+                NewMenu.Show();
+                CreateReservationForm.adminCheck = true;
+            }
             else
             {
                 MessageBox.Show("Check your username and password.");
             }
-            //sqlConnection.Close();
+            con.Close();
         }
 
         private void ExitButton_Click(object sender, EventArgs e)

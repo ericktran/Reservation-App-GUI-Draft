@@ -41,6 +41,13 @@ namespace GUI_Draft
         private void ApproveReservation_Click(object sender, EventArgs e)
         {
             this.Close();
+            ApproveReservationForm ApproveForm = new ApproveReservationForm();
+            ApproveForm.Show();
+        }
+
+        private void AdminMenu_Load(object sender, EventArgs e)
+        {
+            UsernameLabel.Text = LogIn.UsernameLabelTxt;
         }
     }
 }

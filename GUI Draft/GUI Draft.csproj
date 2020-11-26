@@ -63,10 +63,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArtistLogInDatabaseDataSet2.cs">
+      <DependentUpon>ArtistLogInDatabaseDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ArtistLogInDatabaseDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ArtistLogInDatabaseDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ApproveReservationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApproveReservationForm.Designer.cs">
+      <DependentUpon>ApproveReservationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainMenuForm.cs">
       <SubType>Form</SubType>
@@ -100,6 +109,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ApproveReservationForm.resx">
+      <DependentUpon>ApproveReservationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogInWindow.aa.resx">
       <DependentUpon>LogInWindow.cs</DependentUpon>
     </EmbeddedResource>

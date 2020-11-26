@@ -14,13 +14,13 @@ namespace GUI_Draft
 {
     public partial class CreateReservationForm : Form
     {
-        bool adminCheck;
+        public static bool adminCheck;
         DateTime showDateTime;
         String showDate;
         String showTime;
         String venue;
         String artist;
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C: \Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf;Integrated Security=True;Connect Timeout=30");
 
         public CreateReservationForm()
         {
@@ -55,8 +55,12 @@ namespace GUI_Draft
 
         private void CreateReservationForm_Load(object sender, EventArgs e)
         {
-            
-            if (LogIn.UsernameLabelTxt == "Admin" || LogIn.UsernameLabelTxt == "admin")
+            con.Open();
+            String query = "Select * FROM dbo.Employee WHERE EmployeeID = '" + LogIn.UsernameLabelTxt + "' AND EmployeeisManager = 1";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, con);
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            if (dataTable.Rows.Count == 1) 
             {
                 adminCheck = true;
             }
@@ -72,11 +76,10 @@ namespace GUI_Draft
             venue = VenueNameTxt.Text;
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "Insert into PendingReservations values('" + artist +"','" + venue + "','"+ showDate + "','"+ showTime +"')";
+            cmd.CommandText = "Insert into dbo.PendingReservations([ArtistID],[VenueName],[EventDate],[EventTime]) values ('" + artist +"','" + venue + "','"+ showDate + "','"+ showTime +"')";
             cmd.ExecuteNonQuery();
             MessageBox.Show(string.Format("{0} {1} {2} {3}", artist, venue, showDate, showTime), "Reservation Confirmation", MessageBoxButtons.OK);
             con.Close();
-            //To be continued Plan is to import data into database and have it approved then stored.
         }
     }
 }
