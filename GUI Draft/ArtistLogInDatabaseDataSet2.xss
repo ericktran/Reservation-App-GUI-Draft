@@ -12,7 +12,7 @@
     <Shape ID="DesignTable:Invoice" ZOrder="9" X="683" Y="70" Height="167" Width="196" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="112" />
     <Shape ID="DesignTable:Payment" ZOrder="8" X="400" Y="775" Height="167" Width="207" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="112" />
     <Shape ID="DesignTable:Venue" ZOrder="7" X="400" Y="1012" Height="188" Width="191" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="133" />
-    <Shape ID="DesignTable:PendingReservations" ZOrder="1" X="691" Y="285" Height="167" Width="283" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="112" />
+    <Shape ID="DesignTable:PendingReservations" ZOrder="1" X="699" Y="322" Height="188" Width="283" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="133" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:FK_ArtistID" ZOrder="6" LineWidth="11">

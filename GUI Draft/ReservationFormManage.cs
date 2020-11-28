@@ -46,5 +46,28 @@ namespace GUI_Draft
                 MainMenu.Show();
             }
         }
+
+        private void UpdateDataButton_Click(object sender, EventArgs e)
+        {
+            if (CreateReservationForm.adminCheck == true)
+            {
+                this.eventReservationTableAdapter.Fill(this.artistLogInDatabaseDataSet.EventReservation);
+                MessageBox.Show("Updated Info", "Update", MessageBoxButtons.OK);
+            }
+            else
+            {
+                this.eventReservationTableAdapter.FillByArtistID(this.artistLogInDatabaseDataSet.EventReservation, LogIn.UsernameLabelTxt);
+                MessageBox.Show("Updated Info", "Update", MessageBoxButtons.OK);
+            }
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 0)
+            {
+                dataGridView1.Rows.RemoveAt(this.dataGridView1.SelectedRows[0].Index);
+                MessageBox.Show("Entry Deleted", "Delete Confirmation", MessageBoxButtons.OK);
+            }
+        }
     }
 }

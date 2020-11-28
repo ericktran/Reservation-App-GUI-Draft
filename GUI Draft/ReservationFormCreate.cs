@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,7 +19,7 @@ namespace GUI_Draft
         DateTime showDateTime;
         String showDate;
         String showTime;
-        String venue;
+        int venueID;
         String artist;
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf;Integrated Security=True;Connect Timeout=30");
 
@@ -73,12 +74,14 @@ namespace GUI_Draft
         {
             con.Open();
             artist = ArtistNameText.Text;
-            venue = VenueNameTxt.Text;
+            venueID = VenueSelection.SelectedIndex;
+            string venue = VenueSelection.SelectedItem.ToString();
+            showDateTime = DateTime.ParseExact(showDate + " " + showTime, "dd/MM/yy h:mm tt", CultureInfo.InvariantCulture);
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "Insert into dbo.PendingReservations([ArtistID],[VenueName],[EventDate],[EventTime]) values ('" + artist +"','" + venue + "','"+ showDate + "','"+ showTime +"')";
+            cmd.CommandText = "Insert into dbo.PendingReservations([ArtistID],[VenueID],[EventDateTime]) values ('" + artist +"','" + venueID + "','"+ showDateTime + "')";
             cmd.ExecuteNonQuery();
-            MessageBox.Show(string.Format("{0} {1} {2} {3}", artist, venue, showDate, showTime), "Reservation Confirmation", MessageBoxButtons.OK);
+            MessageBox.Show(string.Format("{0} {1} {2}", artist, venue, showDateTime), "Reservation Confirmation", MessageBoxButtons.OK);
             con.Close();
         }
     }

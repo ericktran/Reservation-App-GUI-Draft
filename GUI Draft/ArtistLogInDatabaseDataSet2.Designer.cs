@@ -2592,13 +2592,15 @@ namespace GUI_Draft {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class PendingReservationsDataTable : global::System.Data.TypedTableBase<PendingReservationsRow> {
             
+            private global::System.Data.DataColumn columnPendingID;
+            
             private global::System.Data.DataColumn columnArtistID;
             
-            private global::System.Data.DataColumn columnVenueName;
+            private global::System.Data.DataColumn columnVenueID;
             
-            private global::System.Data.DataColumn columnEventDate;
+            private global::System.Data.DataColumn columnEventDateTime;
             
-            private global::System.Data.DataColumn columnEventTime;
+            private global::System.Data.DataColumn columnEmployeeID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -2635,6 +2637,14 @@ namespace GUI_Draft {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PendingIDColumn {
+                get {
+                    return this.columnPendingID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn ArtistIDColumn {
                 get {
                     return this.columnArtistID;
@@ -2643,25 +2653,25 @@ namespace GUI_Draft {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn VenueNameColumn {
+            public global::System.Data.DataColumn VenueIDColumn {
                 get {
-                    return this.columnVenueName;
+                    return this.columnVenueID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn EventDateColumn {
+            public global::System.Data.DataColumn EventDateTimeColumn {
                 get {
-                    return this.columnEventDate;
+                    return this.columnEventDateTime;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn EventTimeColumn {
+            public global::System.Data.DataColumn EmployeeIDColumn {
                 get {
-                    return this.columnEventTime;
+                    return this.columnEmployeeID;
                 }
             }
             
@@ -2702,13 +2712,14 @@ namespace GUI_Draft {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PendingReservationsRow AddPendingReservationsRow(string ArtistID, string VenueName, System.DateTime EventDate, System.TimeSpan EventTime) {
+            public PendingReservationsRow AddPendingReservationsRow(string ArtistID, int VenueID, System.DateTime EventDateTime, string EmployeeID) {
                 PendingReservationsRow rowPendingReservationsRow = ((PendingReservationsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        null,
                         ArtistID,
-                        VenueName,
-                        EventDate,
-                        EventTime};
+                        VenueID,
+                        EventDateTime,
+                        EmployeeID};
                 rowPendingReservationsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPendingReservationsRow);
                 return rowPendingReservationsRow;
@@ -2716,9 +2727,9 @@ namespace GUI_Draft {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PendingReservationsRow FindByArtistID(string ArtistID) {
+            public PendingReservationsRow FindByPendingID(int PendingID) {
                 return ((PendingReservationsRow)(this.Rows.Find(new object[] {
-                            ArtistID})));
+                            PendingID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2738,29 +2749,36 @@ namespace GUI_Draft {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
+                this.columnPendingID = base.Columns["PendingID"];
                 this.columnArtistID = base.Columns["ArtistID"];
-                this.columnVenueName = base.Columns["VenueName"];
-                this.columnEventDate = base.Columns["EventDate"];
-                this.columnEventTime = base.Columns["EventTime"];
+                this.columnVenueID = base.Columns["VenueID"];
+                this.columnEventDateTime = base.Columns["EventDateTime"];
+                this.columnEmployeeID = base.Columns["EmployeeID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
+                this.columnPendingID = new global::System.Data.DataColumn("PendingID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPendingID);
                 this.columnArtistID = new global::System.Data.DataColumn("ArtistID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnArtistID);
-                this.columnVenueName = new global::System.Data.DataColumn("VenueName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVenueName);
-                this.columnEventDate = new global::System.Data.DataColumn("EventDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEventDate);
-                this.columnEventTime = new global::System.Data.DataColumn("EventTime", typeof(global::System.TimeSpan), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEventTime);
+                this.columnVenueID = new global::System.Data.DataColumn("VenueID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVenueID);
+                this.columnEventDateTime = new global::System.Data.DataColumn("EventDateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEventDateTime);
+                this.columnEmployeeID = new global::System.Data.DataColumn("EmployeeID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmployeeID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnArtistID}, true));
-                this.columnArtistID.AllowDBNull = false;
-                this.columnArtistID.Unique = true;
+                                this.columnPendingID}, true));
+                this.columnPendingID.AutoIncrement = true;
+                this.columnPendingID.AutoIncrementSeed = -1;
+                this.columnPendingID.AutoIncrementStep = -1;
+                this.columnPendingID.AllowDBNull = false;
+                this.columnPendingID.ReadOnly = true;
+                this.columnPendingID.Unique = true;
                 this.columnArtistID.MaxLength = 50;
-                this.columnVenueName.MaxLength = 50;
+                this.columnEmployeeID.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4127,9 +4145,25 @@ namespace GUI_Draft {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int PendingID {
+                get {
+                    return ((int)(this[this.tablePendingReservations.PendingIDColumn]));
+                }
+                set {
+                    this[this.tablePendingReservations.PendingIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string ArtistID {
                 get {
-                    return ((string)(this[this.tablePendingReservations.ArtistIDColumn]));
+                    try {
+                        return ((string)(this[this.tablePendingReservations.ArtistIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ArtistID\' in table \'PendingReservations\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablePendingReservations.ArtistIDColumn] = value;
@@ -4138,86 +4172,98 @@ namespace GUI_Draft {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string VenueName {
+            public int VenueID {
                 get {
                     try {
-                        return ((string)(this[this.tablePendingReservations.VenueNameColumn]));
+                        return ((int)(this[this.tablePendingReservations.VenueIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'VenueName\' in table \'PendingReservations\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'VenueID\' in table \'PendingReservations\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePendingReservations.VenueNameColumn] = value;
+                    this[this.tablePendingReservations.VenueIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime EventDate {
+            public System.DateTime EventDateTime {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tablePendingReservations.EventDateColumn]));
+                        return ((global::System.DateTime)(this[this.tablePendingReservations.EventDateTimeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'EventDate\' in table \'PendingReservations\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'EventDateTime\' in table \'PendingReservations\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePendingReservations.EventDateColumn] = value;
+                    this[this.tablePendingReservations.EventDateTimeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.TimeSpan EventTime {
+            public string EmployeeID {
                 get {
                     try {
-                        return ((global::System.TimeSpan)(this[this.tablePendingReservations.EventTimeColumn]));
+                        return ((string)(this[this.tablePendingReservations.EmployeeIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'EventTime\' in table \'PendingReservations\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'EmployeeID\' in table \'PendingReservations\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePendingReservations.EventTimeColumn] = value;
+                    this[this.tablePendingReservations.EmployeeIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsVenueNameNull() {
-                return this.IsNull(this.tablePendingReservations.VenueNameColumn);
+            public bool IsArtistIDNull() {
+                return this.IsNull(this.tablePendingReservations.ArtistIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetVenueNameNull() {
-                this[this.tablePendingReservations.VenueNameColumn] = global::System.Convert.DBNull;
+            public void SetArtistIDNull() {
+                this[this.tablePendingReservations.ArtistIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsEventDateNull() {
-                return this.IsNull(this.tablePendingReservations.EventDateColumn);
+            public bool IsVenueIDNull() {
+                return this.IsNull(this.tablePendingReservations.VenueIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetEventDateNull() {
-                this[this.tablePendingReservations.EventDateColumn] = global::System.Convert.DBNull;
+            public void SetVenueIDNull() {
+                this[this.tablePendingReservations.VenueIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsEventTimeNull() {
-                return this.IsNull(this.tablePendingReservations.EventTimeColumn);
+            public bool IsEventDateTimeNull() {
+                return this.IsNull(this.tablePendingReservations.EventDateTimeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetEventTimeNull() {
-                this[this.tablePendingReservations.EventTimeColumn] = global::System.Convert.DBNull;
+            public void SetEventDateTimeNull() {
+                this[this.tablePendingReservations.EventDateTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsEmployeeIDNull() {
+                return this.IsNull(this.tablePendingReservations.EmployeeIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetEmployeeIDNull() {
+                this[this.tablePendingReservations.EmployeeIDColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7610,49 +7656,53 @@ SELECT VenueID, VenueName, VenueMaxCapacity, VenueSqFt, VenueHourlyRate FROM Ven
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "PendingReservations";
+            tableMapping.ColumnMappings.Add("PendingID", "PendingID");
             tableMapping.ColumnMappings.Add("ArtistID", "ArtistID");
-            tableMapping.ColumnMappings.Add("VenueName", "VenueName");
-            tableMapping.ColumnMappings.Add("EventDate", "EventDate");
-            tableMapping.ColumnMappings.Add("EventTime", "EventTime");
+            tableMapping.ColumnMappings.Add("VenueID", "VenueID");
+            tableMapping.ColumnMappings.Add("EventDateTime", "EventDateTime");
+            tableMapping.ColumnMappings.Add("EmployeeID", "EmployeeID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[PendingReservations] WHERE (([ArtistID] = @Original_ArtistID) AND ((@IsNull_VenueName = 1 AND [VenueName] IS NULL) OR ([VenueName] = @Original_VenueName)) AND ((@IsNull_EventDate = 1 AND [EventDate] IS NULL) OR ([EventDate] = @Original_EventDate)) AND ((@IsNull_EventTime = 1 AND [EventTime] IS NULL) OR ([EventTime] = @Original_EventTime)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[PendingReservations] WHERE (([PendingID] = @Original_PendingID) AND ((@IsNull_ArtistID = 1 AND [ArtistID] IS NULL) OR ([ArtistID] = @Original_ArtistID)) AND ((@IsNull_VenueID = 1 AND [VenueID] IS NULL) OR ([VenueID] = @Original_VenueID)) AND ((@IsNull_EventDateTime = 1 AND [EventDateTime] IS NULL) OR ([EventDateTime] = @Original_EventDateTime)) AND ((@IsNull_EmployeeID = 1 AND [EmployeeID] IS NULL) OR ([EmployeeID] = @Original_EmployeeID)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PendingID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PendingID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ArtistID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ArtistID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ArtistID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ArtistID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VenueName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VenueName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VenueName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VenueName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EventDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EventDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EventTime", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventTime", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EventTime", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VenueID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VenueID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VenueID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VenueID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EventDateTime", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventDateTime", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EventDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventDateTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmployeeID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[PendingReservations] ([ArtistID], [VenueName], [EventDate], [E" +
-                "ventTime]) VALUES (@ArtistID, @VenueName, @EventDate, @EventTime);\r\nSELECT Artis" +
-                "tID, VenueName, EventDate, EventTime FROM PendingReservations WHERE (ArtistID = " +
-                "@ArtistID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[PendingReservations] ([ArtistID], [VenueID], [EventDateTime], [EmployeeID]) VALUES (@ArtistID, @VenueID, @EventDateTime, @EmployeeID);
+SELECT PendingID, ArtistID, VenueID, EventDateTime, EmployeeID FROM PendingReservations WHERE (PendingID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ArtistID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ArtistID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VenueName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VenueName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EventDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EventTime", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VenueID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VenueID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EventDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventDateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[PendingReservations] SET [ArtistID] = @ArtistID, [VenueName] = @VenueName, [EventDate] = @EventDate, [EventTime] = @EventTime WHERE (([ArtistID] = @Original_ArtistID) AND ((@IsNull_VenueName = 1 AND [VenueName] IS NULL) OR ([VenueName] = @Original_VenueName)) AND ((@IsNull_EventDate = 1 AND [EventDate] IS NULL) OR ([EventDate] = @Original_EventDate)) AND ((@IsNull_EventTime = 1 AND [EventTime] IS NULL) OR ([EventTime] = @Original_EventTime)));
-SELECT ArtistID, VenueName, EventDate, EventTime FROM PendingReservations WHERE (ArtistID = @ArtistID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[PendingReservations] SET [ArtistID] = @ArtistID, [VenueID] = @VenueID, [EventDateTime] = @EventDateTime, [EmployeeID] = @EmployeeID WHERE (([PendingID] = @Original_PendingID) AND ((@IsNull_ArtistID = 1 AND [ArtistID] IS NULL) OR ([ArtistID] = @Original_ArtistID)) AND ((@IsNull_VenueID = 1 AND [VenueID] IS NULL) OR ([VenueID] = @Original_VenueID)) AND ((@IsNull_EventDateTime = 1 AND [EventDateTime] IS NULL) OR ([EventDateTime] = @Original_EventDateTime)) AND ((@IsNull_EmployeeID = 1 AND [EmployeeID] IS NULL) OR ([EmployeeID] = @Original_EmployeeID)));
+SELECT PendingID, ArtistID, VenueID, EventDateTime, EmployeeID FROM PendingReservations WHERE (PendingID = @PendingID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ArtistID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ArtistID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VenueName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VenueName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EventDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EventTime", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VenueID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VenueID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EventDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventDateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PendingID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PendingID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ArtistID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ArtistID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ArtistID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ArtistID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VenueName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VenueName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VenueName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VenueName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EventDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EventDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EventTime", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventTime", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EventTime", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VenueID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VenueID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VenueID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VenueID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EventDateTime", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventDateTime", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EventDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EventDateTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmployeeID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PendingID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "PendingID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7668,7 +7718,8 @@ SELECT ArtistID, VenueName, EventDate, EventTime FROM PendingReservations WHERE 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ArtistID, VenueName, EventDate, EventTime FROM dbo.PendingReservations";
+            this._commandCollection[0].CommandText = "SELECT PendingID, ArtistID, VenueID, EventDateTime, EmployeeID FROM dbo.PendingRe" +
+                "servations";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7729,36 +7780,39 @@ SELECT ArtistID, VenueName, EventDate, EventTime FROM PendingReservations WHERE 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_ArtistID, string Original_VenueName, global::System.Nullable<global::System.DateTime> Original_EventDate, global::System.Nullable<global::System.TimeSpan> Original_EventTime) {
+        public virtual int Delete(int Original_PendingID, string Original_ArtistID, global::System.Nullable<int> Original_VenueID, global::System.Nullable<global::System.DateTime> Original_EventDateTime, string Original_EmployeeID) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_PendingID));
             if ((Original_ArtistID == null)) {
-                throw new global::System.ArgumentNullException("Original_ArtistID");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_ArtistID));
-            }
-            if ((Original_VenueName == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_VenueName));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_ArtistID));
             }
-            if ((Original_EventDate.HasValue == true)) {
+            if ((Original_VenueID.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_EventDate.Value));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_VenueID.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Original_EventTime.HasValue == true)) {
+            if ((Original_EventDateTime.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.TimeSpan)(Original_EventTime.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_EventDateTime.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((Original_EmployeeID == null)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_EmployeeID));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -7780,30 +7834,30 @@ SELECT ArtistID, VenueName, EventDate, EventTime FROM PendingReservations WHERE 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string ArtistID, string VenueName, global::System.Nullable<global::System.DateTime> EventDate, global::System.Nullable<global::System.TimeSpan> EventTime) {
+        public virtual int Insert(string ArtistID, global::System.Nullable<int> VenueID, global::System.Nullable<global::System.DateTime> EventDateTime, string EmployeeID) {
             if ((ArtistID == null)) {
-                throw new global::System.ArgumentNullException("ArtistID");
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ArtistID));
             }
-            if ((VenueName == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            if ((VenueID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(VenueID.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(VenueName));
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((EventDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(EventDate.Value));
+            if ((EventDateTime.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(EventDateTime.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((EventTime.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((System.TimeSpan)(EventTime.Value));
+            if ((EmployeeID == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(EmployeeID));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -7825,61 +7879,65 @@ SELECT ArtistID, VenueName, EventDate, EventTime FROM PendingReservations WHERE 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string ArtistID, string VenueName, global::System.Nullable<global::System.DateTime> EventDate, global::System.Nullable<global::System.TimeSpan> EventTime, string Original_ArtistID, string Original_VenueName, global::System.Nullable<global::System.DateTime> Original_EventDate, global::System.Nullable<global::System.TimeSpan> Original_EventTime) {
+        public virtual int Update(string ArtistID, global::System.Nullable<int> VenueID, global::System.Nullable<global::System.DateTime> EventDateTime, string EmployeeID, int Original_PendingID, string Original_ArtistID, global::System.Nullable<int> Original_VenueID, global::System.Nullable<global::System.DateTime> Original_EventDateTime, string Original_EmployeeID, int PendingID) {
             if ((ArtistID == null)) {
-                throw new global::System.ArgumentNullException("ArtistID");
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(ArtistID));
             }
-            if ((VenueName == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            if ((VenueID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(VenueID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(VenueName));
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((EventDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(EventDate.Value));
+            if ((EventDateTime.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(EventDateTime.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((EventTime.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.TimeSpan)(EventTime.Value));
-            }
-            else {
+            if ((EmployeeID == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((Original_ArtistID == null)) {
-                throw new global::System.ArgumentNullException("Original_ArtistID");
-            }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_ArtistID));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(EmployeeID));
             }
-            if ((Original_VenueName == null)) {
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_PendingID));
+            if ((Original_ArtistID == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_VenueName));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_ArtistID));
             }
-            if ((Original_EventDate.HasValue == true)) {
+            if ((Original_VenueID.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_EventDate.Value));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_VenueID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_EventTime.HasValue == true)) {
+            if ((Original_EventDateTime.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((System.TimeSpan)(Original_EventTime.Value));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Original_EventDateTime.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
+            if ((Original_EmployeeID == null)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_EmployeeID));
+            }
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(PendingID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7900,8 +7958,8 @@ SELECT ArtistID, VenueName, EventDate, EventTime FROM PendingReservations WHERE 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string VenueName, global::System.Nullable<global::System.DateTime> EventDate, global::System.Nullable<global::System.TimeSpan> EventTime, string Original_ArtistID, string Original_VenueName, global::System.Nullable<global::System.DateTime> Original_EventDate, global::System.Nullable<global::System.TimeSpan> Original_EventTime) {
-            return this.Update(Original_ArtistID, VenueName, EventDate, EventTime, Original_ArtistID, Original_VenueName, Original_EventDate, Original_EventTime);
+        public virtual int Update(string ArtistID, global::System.Nullable<int> VenueID, global::System.Nullable<global::System.DateTime> EventDateTime, string EmployeeID, int Original_PendingID, string Original_ArtistID, global::System.Nullable<int> Original_VenueID, global::System.Nullable<global::System.DateTime> Original_EventDateTime, string Original_EmployeeID) {
+            return this.Update(ArtistID, VenueID, EventDateTime, EmployeeID, Original_PendingID, Original_ArtistID, Original_VenueID, Original_EventDateTime, Original_EmployeeID, Original_PendingID);
         }
     }
     

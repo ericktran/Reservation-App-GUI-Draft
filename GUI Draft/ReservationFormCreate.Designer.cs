@@ -30,7 +30,6 @@
         {
             this.SubmitReservation = new System.Windows.Forms.Button();
             this.ArtistNameText = new System.Windows.Forms.TextBox();
-            this.VenueNameTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.DateOfShow = new System.Windows.Forms.MonthCalendar();
@@ -38,6 +37,7 @@
             this.TimeDropDown = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.MainMenu = new System.Windows.Forms.Button();
+            this.VenueSelection = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // SubmitReservation
@@ -56,13 +56,6 @@
             this.ArtistNameText.Name = "ArtistNameText";
             this.ArtistNameText.Size = new System.Drawing.Size(262, 20);
             this.ArtistNameText.TabIndex = 1;
-            // 
-            // VenueNameTxt
-            // 
-            this.VenueNameTxt.Location = new System.Drawing.Point(506, 32);
-            this.VenueNameTxt.Name = "VenueNameTxt";
-            this.VenueNameTxt.Size = new System.Drawing.Size(209, 20);
-            this.VenueNameTxt.TabIndex = 2;
             // 
             // label1
             // 
@@ -176,11 +169,26 @@
             this.MainMenu.UseVisualStyleBackColor = true;
             this.MainMenu.Click += new System.EventHandler(this.MainMenu_Click);
             // 
+            // VenueSelection
+            // 
+            this.VenueSelection.FormattingEnabled = true;
+            this.VenueSelection.Items.AddRange(new object[] {
+            "1. HouseofBlues",
+            "2. ObservatoryOC",
+            "3. The Forum",
+            "4. Staples Center",
+            "5. Honda Center"});
+            this.VenueSelection.Location = new System.Drawing.Point(526, 39);
+            this.VenueSelection.Name = "VenueSelection";
+            this.VenueSelection.Size = new System.Drawing.Size(121, 21);
+            this.VenueSelection.TabIndex = 10;
+            // 
             // CreateReservationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(753, 283);
+            this.Controls.Add(this.VenueSelection);
             this.Controls.Add(this.MainMenu);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.TimeDropDown);
@@ -188,7 +196,6 @@
             this.Controls.Add(this.DateOfShow);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.VenueNameTxt);
             this.Controls.Add(this.ArtistNameText);
             this.Controls.Add(this.SubmitReservation);
             this.Name = "CreateReservationForm";
@@ -204,7 +211,6 @@
 
         private System.Windows.Forms.Button SubmitReservation;
         private System.Windows.Forms.TextBox ArtistNameText;
-        private System.Windows.Forms.TextBox VenueNameTxt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MonthCalendar DateOfShow;
@@ -212,5 +218,6 @@
         private System.Windows.Forms.ComboBox TimeDropDown;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button MainMenu;
+        private System.Windows.Forms.ComboBox VenueSelection;
     }
 }

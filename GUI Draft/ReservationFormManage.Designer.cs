@@ -33,9 +33,6 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.MainMenuButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.artistLogInDatabaseDataSet = new GUI_Draft.ArtistLogInDatabaseDataSet();
-            this.eventReservationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.eventReservationTableAdapter = new GUI_Draft.ArtistLogInDatabaseDataSetTableAdapters.EventReservationTableAdapter();
             this.reservationIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artistIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,9 +42,12 @@
             this.eventDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eventDateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eventStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eventReservationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.artistLogInDatabaseDataSet = new GUI_Draft.ArtistLogInDatabaseDataSet();
+            this.eventReservationTableAdapter = new GUI_Draft.ArtistLogInDatabaseDataSetTableAdapters.EventReservationTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.artistLogInDatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventReservationBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.artistLogInDatabaseDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // UpdateDataButton
@@ -58,6 +58,7 @@
             this.UpdateDataButton.TabIndex = 0;
             this.UpdateDataButton.Text = "Update";
             this.UpdateDataButton.UseVisualStyleBackColor = true;
+            this.UpdateDataButton.Click += new System.EventHandler(this.UpdateDataButton_Click);
             // 
             // DeleteButton
             // 
@@ -67,6 +68,7 @@
             this.DeleteButton.TabIndex = 1;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // MainMenuButton
             // 
@@ -98,20 +100,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1104, 794);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // artistLogInDatabaseDataSet
-            // 
-            this.artistLogInDatabaseDataSet.DataSetName = "ArtistLogInDatabaseDataSet";
-            this.artistLogInDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // eventReservationBindingSource
-            // 
-            this.eventReservationBindingSource.DataMember = "EventReservation";
-            this.eventReservationBindingSource.DataSource = this.artistLogInDatabaseDataSet;
-            // 
-            // eventReservationTableAdapter
-            // 
-            this.eventReservationTableAdapter.ClearBeforeFill = true;
             // 
             // reservationIDDataGridViewTextBoxColumn
             // 
@@ -167,6 +155,20 @@
             this.eventStatusDataGridViewTextBoxColumn.HeaderText = "EventStatus";
             this.eventStatusDataGridViewTextBoxColumn.Name = "eventStatusDataGridViewTextBoxColumn";
             // 
+            // eventReservationBindingSource
+            // 
+            this.eventReservationBindingSource.DataMember = "EventReservation";
+            this.eventReservationBindingSource.DataSource = this.artistLogInDatabaseDataSet;
+            // 
+            // artistLogInDatabaseDataSet
+            // 
+            this.artistLogInDatabaseDataSet.DataSetName = "ArtistLogInDatabaseDataSet";
+            this.artistLogInDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // eventReservationTableAdapter
+            // 
+            this.eventReservationTableAdapter.ClearBeforeFill = true;
+            // 
             // ManageReservationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -181,8 +183,8 @@
             this.Text = "Manage Reservation";
             this.Load += new System.EventHandler(this.ManageReservationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.artistLogInDatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventReservationBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.artistLogInDatabaseDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
