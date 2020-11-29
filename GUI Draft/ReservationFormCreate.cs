@@ -69,6 +69,7 @@ namespace GUI_Draft
             {
                 adminCheck = false;
             }
+            con.Close();
         }
         private void SubmitReservation_Click(object sender, EventArgs e)
         {
@@ -76,7 +77,7 @@ namespace GUI_Draft
             artist = ArtistNameText.Text;
             venueID = VenueSelection.SelectedIndex;
             string venue = VenueSelection.SelectedItem.ToString();
-            showDateTime = DateTime.ParseExact(showDate + " " + showTime, "dd/MM/yy h:mm tt", CultureInfo.InvariantCulture);
+            showDateTime = DateTime.Parse(showDate + " " + showTime);//, "dd/MM/yy h:mm tt", CultureInfo.InvariantCulture);
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "Insert into dbo.PendingReservations([ArtistID],[VenueID],[EventDateTime]) values ('" + artist +"','" + venueID + "','"+ showDateTime + "')";

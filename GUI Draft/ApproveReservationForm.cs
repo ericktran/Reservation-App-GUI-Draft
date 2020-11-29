@@ -29,35 +29,45 @@ namespace GUI_Draft
         private void ApproveButton_Click(object sender, EventArgs e)
         {
             con.Open();
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            String update = "Update dbo.PendingReservations Set EmployeeID = '" + LogIn.UsernameLabelTxt + "' WHERE PendingID = 1";
-            SqlCommand updateEmployee = new SqlCommand(update, con);
-            cmd.CommandText = "Insert into dbo.EventReservation (ArtistID , VenueID , EventDateTime, EmployeeID) SELECT ArtistID , VenueID , EventDateTime, EmployeeID FROM dbo.PendingReservations WHERE PendingID = 1";
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Reservation Approved.", "Reservation Approved Window", MessageBoxButtons.OK);
-            String delete = "Delete from dbo.PendingReservations where PendingID = 1";
-            SqlCommand deletePending = new SqlCommand(delete, con);
-            String reseed = "ALTER TABLE dbo.PendingReservations DROP CONSTRAINT PK_PendingReservations ALTER TABLE dbo.PendingReservations ADD CONSTRAINT PK_PendingReservations PRIMARY KEY (PendingID)";
-            SqlCommand reseedPending = new SqlCommand(reseed, con);
+            String fillTable = "Select TOP 1 * From dbo.PendingReservations";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, con);
+            DataTable pendingTable = new DataTable();
+            sqlDataAdapter.Fill(pendingTable);
+            String tableID = pendingTable.Rows[0][0].ToString();
+            int tableIDNum = Int32.Parse(tableID);
+            if (tableIDNum > -1)
+            {
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "Update dbo.PendingReservations Set EmployeeID = '" + LogIn.UsernameLabelTxt + "' WHERE PendingID = " + tableIDNum;
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "Insert into dbo.EventReservation ([ArtistID] , [VenueID] , [EventDateTime], [EmployeeID]) SELECT ArtistID , VenueID , EventDateTime, EmployeeID FROM dbo.PendingReservations WHERE PendingID = " + tableIDNum;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Reservation Approved.", "Reservation Approved Window", MessageBoxButtons.OK);
+                cmd.CommandText = "Delete from dbo.PendingReservations where PendingID = " + tableIDNum;
+                cmd.ExecuteNonQuery();
+            }
+            else
+            {
+                MessageBox.Show("There are no pending reservations.", "Invalid", MessageBoxButtons.OK);
+            }
+            this.pendingReservationsTableAdapter.Fill(this.artistLogInDatabaseDataSet.PendingReservations);
             con.Close();
         }
 
         private void Remove_Click(object sender, EventArgs e)
         {
-            // No row selected no delete....
-            if (dataGridView1.SelectedRows.Count == 0)
-            {
-
-                MessageBox.Show("No row selected !");
-            }
-
-            String remove = "DELETE FROM dbo.PendingReservation WHERE PendingID = @rowID";
+            String remove = "DELETE FROM dbo.PendingReservations WHERE PendingID = @rowID";
 
             using (SqlCommand deleteRecord = new SqlCommand(remove, con))
             {
                 con.Open();
-                if (dataGridView1.CurrentCell.RowIndex > 0)
+                if (dataGridView1.SelectedRows.Count == 0)
+                {
+
+                    MessageBox.Show("No row selected !");
+                }
+                else if (dataGridView1.CurrentCell.RowIndex > 0)
                 {
 
                     int selectedIndex = dataGridView1.SelectedRows[0].Index;
@@ -69,6 +79,7 @@ namespace GUI_Draft
                     dataGridView1.Rows.RemoveAt(selectedIndex);
                     MessageBox.Show("Entry Deleted", "Delete Confirmation", MessageBoxButtons.OK);
                 }
+                con.Close();
 
             }
         }
@@ -78,6 +89,16 @@ namespace GUI_Draft
             this.Hide();
             AdminMenu adminMenu = new AdminMenu();
             adminMenu.Show();
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            this.Update();
+            this.Refresh();
+            this.pendingReservationsTableAdapter.Update(this.artistLogInDatabaseDataSet.PendingReservations);
+            con.Close();
+            MessageBox.Show("Updated Info", "Update", MessageBoxButtons.OK);
         }
     }
 }

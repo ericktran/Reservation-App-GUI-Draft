@@ -13,6 +13,7 @@ namespace GUI_Draft
 {
     public partial class ManageReservationForm : Form
     {
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf;Integrated Security=True;Connect Timeout=30");
         public ManageReservationForm()
         {
             InitializeComponent();
@@ -51,22 +52,55 @@ namespace GUI_Draft
         {
             if (CreateReservationForm.adminCheck == true)
             {
-                this.eventReservationTableAdapter.Fill(this.artistLogInDatabaseDataSet.EventReservation);
+                dataGridView1.DataSource = null;
+                dataGridView1.Update();
+                dataGridView1.Refresh();
+                dataGridView1.DataSource = eventReservationBindingSource;
+                this.eventReservationTableAdapter.Update(this.artistLogInDatabaseDataSet.EventReservation);
                 MessageBox.Show("Updated Info", "Update", MessageBoxButtons.OK);
+                this.Update();
+                this.Refresh();
             }
             else
             {
+                dataGridView1.DataSource = null;
+                dataGridView1.Update();
+                dataGridView1.Refresh();
+                dataGridView1.DataSource = eventReservationBindingSource;
                 this.eventReservationTableAdapter.FillByArtistID(this.artistLogInDatabaseDataSet.EventReservation, LogIn.UsernameLabelTxt);
+                this.Update();
+                this.Refresh();
                 MessageBox.Show("Updated Info", "Update", MessageBoxButtons.OK);
             }
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (this.dataGridView1.SelectedRows.Count > 0)
+
+            String remove = "DELETE FROM dbo.EventReservation WHERE ReservationID = @rowID";
+
+            using (SqlCommand deleteRecord = new SqlCommand(remove, con))
             {
-                dataGridView1.Rows.RemoveAt(this.dataGridView1.SelectedRows[0].Index);
-                MessageBox.Show("Entry Deleted", "Delete Confirmation", MessageBoxButtons.OK);
+                con.Open();
+                if (dataGridView1.SelectedRows.Count == 0)
+                {
+
+                    MessageBox.Show("No row selected !");
+                }
+                else if (dataGridView1.CurrentCell.RowIndex > 0)
+                {
+
+                    int selectedIndex = dataGridView1.SelectedRows[0].Index;
+                    int rowID = Convert.ToInt32(dataGridView1[0, selectedIndex].Value);
+
+                    deleteRecord.Parameters.Add("@rowID", SqlDbType.Int).Value = rowID;
+                    deleteRecord.ExecuteNonQuery();
+
+                    dataGridView1.Rows.RemoveAt(selectedIndex);
+                    MessageBox.Show("Entry Deleted", "Delete Confirmation", MessageBoxButtons.OK);
+                }
+                con.Close();
+
             }
         }
     }

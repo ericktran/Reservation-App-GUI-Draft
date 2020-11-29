@@ -30,17 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ApproveButton = new System.Windows.Forms.Button();
-            this.Remove = new System.Windows.Forms.Button();
-            this.MainMenu = new System.Windows.Forms.Button();
-            this.pendingReservationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.artistLogInDatabaseDataSet = new GUI_Draft.ArtistLogInDatabaseDataSet();
-            this.pendingReservationsTableAdapter = new GUI_Draft.ArtistLogInDatabaseDataSetTableAdapters.PendingReservationsTableAdapter();
             this.PendingID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artistIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VenueID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EventDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pendingReservationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.artistLogInDatabaseDataSet = new GUI_Draft.ArtistLogInDatabaseDataSet();
+            this.ApproveButton = new System.Windows.Forms.Button();
+            this.Remove = new System.Windows.Forms.Button();
+            this.MainMenu = new System.Windows.Forms.Button();
+            this.pendingReservationsTableAdapter = new GUI_Draft.ArtistLogInDatabaseDataSetTableAdapters.PendingReservationsTableAdapter();
+            this.UpdateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pendingReservationsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.artistLogInDatabaseDataSet)).BeginInit();
@@ -62,50 +63,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(595, 537);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // ApproveButton
-            // 
-            this.ApproveButton.Location = new System.Drawing.Point(760, 473);
-            this.ApproveButton.Name = "ApproveButton";
-            this.ApproveButton.Size = new System.Drawing.Size(75, 23);
-            this.ApproveButton.TabIndex = 1;
-            this.ApproveButton.Text = "Approve";
-            this.ApproveButton.UseVisualStyleBackColor = true;
-            this.ApproveButton.Click += new System.EventHandler(this.ApproveButton_Click);
-            // 
-            // Remove
-            // 
-            this.Remove.Location = new System.Drawing.Point(760, 502);
-            this.Remove.Name = "Remove";
-            this.Remove.Size = new System.Drawing.Size(75, 23);
-            this.Remove.TabIndex = 2;
-            this.Remove.Text = "Remove";
-            this.Remove.UseVisualStyleBackColor = true;
-            this.Remove.Click += new System.EventHandler(this.Remove_Click);
-            // 
-            // MainMenu
-            // 
-            this.MainMenu.Location = new System.Drawing.Point(760, 531);
-            this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(75, 23);
-            this.MainMenu.TabIndex = 3;
-            this.MainMenu.Text = "Main Menu";
-            this.MainMenu.UseVisualStyleBackColor = true;
-            this.MainMenu.Click += new System.EventHandler(this.MainMenu_Click);
-            // 
-            // pendingReservationsBindingSource
-            // 
-            this.pendingReservationsBindingSource.DataMember = "PendingReservations";
-            this.pendingReservationsBindingSource.DataSource = this.artistLogInDatabaseDataSet;
-            // 
-            // artistLogInDatabaseDataSet
-            // 
-            this.artistLogInDatabaseDataSet.DataSetName = "ArtistLogInDatabaseDataSet";
-            this.artistLogInDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // pendingReservationsTableAdapter
-            // 
-            this.pendingReservationsTableAdapter.ClearBeforeFill = true;
             // 
             // PendingID
             // 
@@ -138,16 +95,72 @@
             this.EmployeeID.HeaderText = "EmployeeID";
             this.EmployeeID.Name = "EmployeeID";
             // 
+            // pendingReservationsBindingSource
+            // 
+            this.pendingReservationsBindingSource.DataMember = "PendingReservations";
+            this.pendingReservationsBindingSource.DataSource = this.artistLogInDatabaseDataSet;
+            // 
+            // artistLogInDatabaseDataSet
+            // 
+            this.artistLogInDatabaseDataSet.DataSetName = "ArtistLogInDatabaseDataSet";
+            this.artistLogInDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // ApproveButton
+            // 
+            this.ApproveButton.Location = new System.Drawing.Point(760, 445);
+            this.ApproveButton.Name = "ApproveButton";
+            this.ApproveButton.Size = new System.Drawing.Size(75, 23);
+            this.ApproveButton.TabIndex = 1;
+            this.ApproveButton.Text = "Approve";
+            this.ApproveButton.UseVisualStyleBackColor = true;
+            this.ApproveButton.Click += new System.EventHandler(this.ApproveButton_Click);
+            // 
+            // Remove
+            // 
+            this.Remove.Location = new System.Drawing.Point(760, 502);
+            this.Remove.Name = "Remove";
+            this.Remove.Size = new System.Drawing.Size(75, 23);
+            this.Remove.TabIndex = 2;
+            this.Remove.Text = "Remove";
+            this.Remove.UseVisualStyleBackColor = true;
+            this.Remove.Click += new System.EventHandler(this.Remove_Click);
+            // 
+            // MainMenu
+            // 
+            this.MainMenu.Location = new System.Drawing.Point(760, 531);
+            this.MainMenu.Name = "MainMenu";
+            this.MainMenu.Size = new System.Drawing.Size(75, 23);
+            this.MainMenu.TabIndex = 3;
+            this.MainMenu.Text = "Main Menu";
+            this.MainMenu.UseVisualStyleBackColor = true;
+            this.MainMenu.Click += new System.EventHandler(this.MainMenu_Click);
+            // 
+            // pendingReservationsTableAdapter
+            // 
+            this.pendingReservationsTableAdapter.ClearBeforeFill = true;
+            // 
+            // UpdateButton
+            // 
+            this.UpdateButton.Location = new System.Drawing.Point(760, 474);
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.Size = new System.Drawing.Size(75, 23);
+            this.UpdateButton.TabIndex = 4;
+            this.UpdateButton.Text = "Update";
+            this.UpdateButton.UseVisualStyleBackColor = true;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            // 
             // ApproveReservationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(909, 626);
+            this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.MainMenu);
             this.Controls.Add(this.Remove);
             this.Controls.Add(this.ApproveButton);
             this.Controls.Add(this.dataGridView1);
             this.Name = "ApproveReservationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ApproveReservationForm";
             this.Load += new System.EventHandler(this.ApproveReservationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -171,5 +184,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VenueID;
         private System.Windows.Forms.DataGridViewTextBoxColumn EventDateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeID;
+        private System.Windows.Forms.Button UpdateButton;
     }
 }
