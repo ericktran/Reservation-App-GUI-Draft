@@ -30,7 +30,7 @@ namespace GUI_Draft
 
         private void MainMenu_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             if (adminCheck == true)
             {
                 AdminMenu adminMenu = new AdminMenu();

@@ -28,6 +28,7 @@ namespace GUI_Draft
 
         private void ApproveButton_Click(object sender, EventArgs e)
         {
+            //Set up a safeguard if there are no entries
             con.Open();
             String fillTable = "Select TOP 1 * From dbo.PendingReservations";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, con);
@@ -86,7 +87,7 @@ namespace GUI_Draft
 
         private void MainMenu_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             AdminMenu adminMenu = new AdminMenu();
             adminMenu.Show();
         }
@@ -94,9 +95,12 @@ namespace GUI_Draft
         private void UpdateButton_Click(object sender, EventArgs e)
         {
             con.Open();
-            this.Update();
-            this.Refresh();
-            this.pendingReservationsTableAdapter.Update(this.artistLogInDatabaseDataSet.PendingReservations);
+            String fillTable = "Select * From dbo.PendingReservations";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, con);
+            DataTable updateTable = new DataTable();
+            sqlDataAdapter.Fill(updateTable);
+            dataGridView1.DataSource = updateTable.DefaultView;
+            dataGridView1.Update();
             con.Close();
             MessageBox.Show("Updated Info", "Update", MessageBoxButtons.OK);
         }

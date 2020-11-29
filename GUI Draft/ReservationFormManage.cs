@@ -35,7 +35,7 @@ namespace GUI_Draft
 
         private void MainMenuButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             if (CreateReservationForm.adminCheck == true)
             {
                 AdminMenu adminMenu = new AdminMenu();
@@ -52,24 +52,34 @@ namespace GUI_Draft
         {
             if (CreateReservationForm.adminCheck == true)
             {
-                dataGridView1.DataSource = null;
+                String fillTable = "Select * From dbo.EventReservation";
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, con);
+                DataTable updateTable = new DataTable();
+                sqlDataAdapter.Fill(updateTable);
+                dataGridView1.DataSource = updateTable.DefaultView;
                 dataGridView1.Update();
-                dataGridView1.Refresh();
-                dataGridView1.DataSource = eventReservationBindingSource;
-                this.eventReservationTableAdapter.Update(this.artistLogInDatabaseDataSet.EventReservation);
+                con.Close();
                 MessageBox.Show("Updated Info", "Update", MessageBoxButtons.OK);
-                this.Update();
-                this.Refresh();
+                
             }
             else
             {
-                dataGridView1.DataSource = null;
+                /*dataGridView1.Invalidate();
                 dataGridView1.Update();
                 dataGridView1.Refresh();
-                dataGridView1.DataSource = eventReservationBindingSource;
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(1);
                 this.eventReservationTableAdapter.FillByArtistID(this.artistLogInDatabaseDataSet.EventReservation, LogIn.UsernameLabelTxt);
                 this.Update();
                 this.Refresh();
+                Application.DoEvents();*/
+                String fillTable = "Select * From dbo.EventReservation WHERE ArtistID = '" + LogIn.UsernameLabelTxt + "'";
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, con);
+                DataTable updateTable = new DataTable();
+                sqlDataAdapter.Fill(updateTable);
+                dataGridView1.DataSource = updateTable.DefaultView;
+                dataGridView1.Update();
+                con.Close();
                 MessageBox.Show("Updated Info", "Update", MessageBoxButtons.OK);
             }
         }

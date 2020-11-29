@@ -22,6 +22,7 @@ namespace GUI_Draft
             this.Close();
             LogIn NewLogIn = new LogIn();
             NewLogIn.Show();
+            CreateReservationForm.adminCheck = false;
         }
 
         private void CreateReservation_Click(object sender, EventArgs e)
