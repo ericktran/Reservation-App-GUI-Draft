@@ -13,7 +13,6 @@ namespace GUI_Draft
 {
     public partial class ApproveReservationForm : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf;Integrated Security=True;Connect Timeout=30");
         public ApproveReservationForm()
         {
             InitializeComponent();
@@ -22,23 +21,29 @@ namespace GUI_Draft
         private void ApproveReservationForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'artistLogInDatabaseDataSet.PendingReservations' table. You can move, or remove it, as needed.
-            this.pendingReservationsTableAdapter.Fill(this.artistLogInDatabaseDataSet.PendingReservations);
-
+            LogIn.con.Open();
+            String fillTable = "Select * From dbo.PendingReservations";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, LogIn.con);
+            DataTable updateTable = new DataTable();
+            sqlDataAdapter.Fill(updateTable);
+            dataGridView1.DataSource = updateTable.DefaultView;
+            dataGridView1.Update();
+            LogIn.con.Close();
         }
 
         private void ApproveButton_Click(object sender, EventArgs e)
         {
             //Set up a safeguard if there are no entries
-            con.Open();
+            LogIn.con.Open();
             String fillTable = "Select TOP 1 * From dbo.PendingReservations";
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, con);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, LogIn.con);
             DataTable pendingTable = new DataTable();
             sqlDataAdapter.Fill(pendingTable);
             String tableID = pendingTable.Rows[0][0].ToString();
             int tableIDNum = Int32.Parse(tableID);
             if (tableIDNum > -1)
             {
-                SqlCommand cmd = con.CreateCommand();
+                SqlCommand cmd = LogIn.con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "Update dbo.PendingReservations Set EmployeeID = '" + LogIn.UsernameLabelTxt + "' WHERE PendingID = " + tableIDNum;
                 cmd.ExecuteNonQuery();
@@ -52,17 +57,22 @@ namespace GUI_Draft
             {
                 MessageBox.Show("There are no pending reservations.", "Invalid", MessageBoxButtons.OK);
             }
-            this.pendingReservationsTableAdapter.Fill(this.artistLogInDatabaseDataSet.PendingReservations);
-            con.Close();
+            String fillTableAgain = "Select * From dbo.PendingReservations";
+            SqlDataAdapter sqlDataAdapterRefill = new SqlDataAdapter(fillTableAgain, LogIn.con);
+            DataTable updateTable = new DataTable();
+            sqlDataAdapter.Fill(updateTable);
+            dataGridView1.DataSource = updateTable.DefaultView;
+            dataGridView1.Update();
+            LogIn.con.Close();
         }
 
         private void Remove_Click(object sender, EventArgs e)
         {
             String remove = "DELETE FROM dbo.PendingReservations WHERE PendingID = @rowID";
 
-            using (SqlCommand deleteRecord = new SqlCommand(remove, con))
+            using (SqlCommand deleteRecord = new SqlCommand(remove, LogIn.con))
             {
-                con.Open();
+                LogIn.con.Open();
                 if (dataGridView1.SelectedRows.Count == 0)
                 {
 
@@ -80,7 +90,7 @@ namespace GUI_Draft
                     dataGridView1.Rows.RemoveAt(selectedIndex);
                     MessageBox.Show("Entry Deleted", "Delete Confirmation", MessageBoxButtons.OK);
                 }
-                con.Close();
+                LogIn.con.Close();
 
             }
         }
@@ -94,14 +104,14 @@ namespace GUI_Draft
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            con.Open();
+            LogIn.con.Open();
             String fillTable = "Select * From dbo.PendingReservations";
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, con);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, LogIn.con);
             DataTable updateTable = new DataTable();
             sqlDataAdapter.Fill(updateTable);
             dataGridView1.DataSource = updateTable.DefaultView;
             dataGridView1.Update();
-            con.Close();
+            LogIn.con.Close();
             MessageBox.Show("Updated Info", "Update", MessageBoxButtons.OK);
         }
     }

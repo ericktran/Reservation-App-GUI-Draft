@@ -13,7 +13,7 @@ namespace GUI_Draft
 {
     public partial class ManageReservationForm : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+        //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf;Integrated Security=True;Connect Timeout=30");
         public ManageReservationForm()
         {
             InitializeComponent();
@@ -25,11 +25,23 @@ namespace GUI_Draft
             // TODO: This line of code loads data into the 'artistLogInDatabaseDataSet.EventReservation' table. You can move, or remove it, as needed.
             if (CreateReservationForm.adminCheck == true)
             {
-                this.eventReservationTableAdapter.Fill(this.artistLogInDatabaseDataSet.EventReservation);
+                String fillTable = "Select * From dbo.EventReservation";
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, LogIn.con);
+                DataTable updateTable = new DataTable();
+                sqlDataAdapter.Fill(updateTable);
+                dataGridView1.DataSource = updateTable.DefaultView;
+                dataGridView1.Update();
+                LogIn.con.Close();
             }
             else
             {
-               this.eventReservationTableAdapter.FillByArtistID(this.artistLogInDatabaseDataSet.EventReservation, LogIn.UsernameLabelTxt);
+                String fillTable = "Select * From dbo.EventReservation WHERE ArtistID = '" + LogIn.UsernameLabelTxt + "'";
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, LogIn.con);
+                DataTable updateTable = new DataTable();
+                sqlDataAdapter.Fill(updateTable);
+                dataGridView1.DataSource = updateTable.DefaultView;
+                dataGridView1.Update();
+                LogIn.con.Close();
             }
         }
 
@@ -53,33 +65,24 @@ namespace GUI_Draft
             if (CreateReservationForm.adminCheck == true)
             {
                 String fillTable = "Select * From dbo.EventReservation";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, con);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, LogIn.con);
                 DataTable updateTable = new DataTable();
                 sqlDataAdapter.Fill(updateTable);
                 dataGridView1.DataSource = updateTable.DefaultView;
                 dataGridView1.Update();
-                con.Close();
+                LogIn.con.Close();
                 MessageBox.Show("Updated Info", "Update", MessageBoxButtons.OK);
                 
             }
             else
             {
-                /*dataGridView1.Invalidate();
-                dataGridView1.Update();
-                dataGridView1.Refresh();
-                Application.DoEvents();
-                System.Threading.Thread.Sleep(1);
-                this.eventReservationTableAdapter.FillByArtistID(this.artistLogInDatabaseDataSet.EventReservation, LogIn.UsernameLabelTxt);
-                this.Update();
-                this.Refresh();
-                Application.DoEvents();*/
                 String fillTable = "Select * From dbo.EventReservation WHERE ArtistID = '" + LogIn.UsernameLabelTxt + "'";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, con);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, LogIn.con);
                 DataTable updateTable = new DataTable();
                 sqlDataAdapter.Fill(updateTable);
                 dataGridView1.DataSource = updateTable.DefaultView;
                 dataGridView1.Update();
-                con.Close();
+                LogIn.con.Close();
                 MessageBox.Show("Updated Info", "Update", MessageBoxButtons.OK);
             }
         }
@@ -89,9 +92,9 @@ namespace GUI_Draft
 
             String remove = "DELETE FROM dbo.EventReservation WHERE ReservationID = @rowID";
 
-            using (SqlCommand deleteRecord = new SqlCommand(remove, con))
+            using (SqlCommand deleteRecord = new SqlCommand(remove, LogIn.con))
             {
-                con.Open();
+                LogIn.con.Open();
                 if (dataGridView1.SelectedRows.Count == 0)
                 {
 
@@ -109,9 +112,50 @@ namespace GUI_Draft
                     dataGridView1.Rows.RemoveAt(selectedIndex);
                     MessageBox.Show("Entry Deleted", "Delete Confirmation", MessageBoxButtons.OK);
                 }
-                con.Close();
+                LogIn.con.Close();
 
             }
+        }
+
+        private void exportToExcel_Click(object sender, EventArgs e)
+        {
+            String fillTable = "Select * From dbo.EventReservation";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillTable, LogIn.con);
+            DataTable updateTable = new DataTable();
+            sqlDataAdapter.Fill(updateTable);
+            dataGridView1.DataSource = updateTable.DefaultView;
+            dataGridView1.Update();
+            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+            // creating new WorkBook within Excel application  
+            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+            // creating new Excelsheet in workbook  
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+            // see the excel sheet behind the program  
+            app.Visible = true;
+            // get the reference of first sheet. By default its name is Sheet1.  
+            // store its reference to worksheet  
+            worksheet = workbook.Sheets["Sheet1"];
+            worksheet = workbook.ActiveSheet;
+            // changing the name of active sheet  
+            worksheet.Name = "Exported from gridview";
+            // storing header part in Excel  
+            for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
+            {
+                worksheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
+            }
+            // storing Each row and column value to excel sheet  
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                {
+                    worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+            // Exit from the application  
+            app.Quit();
+
+            MessageBox.Show("Exported to Excel", "Export Confirmation", MessageBoxButtons.OK);
+
         }
     }
 }

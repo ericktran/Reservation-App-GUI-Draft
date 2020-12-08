@@ -45,6 +45,7 @@
             this.eventReservationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.artistLogInDatabaseDataSet = new GUI_Draft.ArtistLogInDatabaseDataSet();
             this.eventReservationTableAdapter = new GUI_Draft.ArtistLogInDatabaseDataSetTableAdapters.EventReservationTableAdapter();
+            this.exportToExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventReservationBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.artistLogInDatabaseDataSet)).BeginInit();
@@ -169,11 +170,22 @@
             // 
             this.eventReservationTableAdapter.ClearBeforeFill = true;
             // 
+            // exportToExcel
+            // 
+            this.exportToExcel.Location = new System.Drawing.Point(1214, 654);
+            this.exportToExcel.Name = "exportToExcel";
+            this.exportToExcel.Size = new System.Drawing.Size(75, 23);
+            this.exportToExcel.TabIndex = 4;
+            this.exportToExcel.Text = "Export";
+            this.exportToExcel.UseVisualStyleBackColor = true;
+            this.exportToExcel.Click += new System.EventHandler(this.exportToExcel_Click);
+            // 
             // ManageReservationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1323, 865);
+            this.Controls.Add(this.exportToExcel);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.MainMenuButton);
             this.Controls.Add(this.DeleteButton);
@@ -207,5 +219,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn eventDescriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn eventDateTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn eventStatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button exportToExcel;
     }
 }

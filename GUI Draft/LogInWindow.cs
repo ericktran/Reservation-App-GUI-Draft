@@ -14,6 +14,7 @@ namespace GUI_Draft
     public partial class LogIn : Form
     {
         public static string UsernameLabelTxt = "";
+        public static SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf;Integrated Security=True;Connect Timeout=30");
 
         public LogIn()
         {
@@ -24,7 +25,6 @@ namespace GUI_Draft
         private void LogInButton_Click(object sender, EventArgs e)
         {
             UsernameLabelTxt = UsernameTxt.Text;
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf;Integrated Security=True;Connect Timeout=30");
             con.Open();
             String query = "Select ArtistID, ArtistPassword FROM dbo.Artist WHERE ArtistID = '" + UsernameTxt.Text.Trim() + "' AND ArtistPassword = '" + PasswordTxt.Text.Trim() + "'";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, con);
