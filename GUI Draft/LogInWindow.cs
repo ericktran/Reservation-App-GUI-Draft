@@ -14,6 +14,8 @@ namespace GUI_Draft
     public partial class LogIn : Form
     {
         public static string UsernameLabelTxt = "";
+
+        //Change this to the connection string on user computer to allow the user to access the Database.
         public static SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf;Integrated Security=True;Connect Timeout=30");
 
         public LogIn()
