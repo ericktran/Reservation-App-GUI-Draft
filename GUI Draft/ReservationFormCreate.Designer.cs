@@ -200,7 +200,7 @@
             this.Controls.Add(this.SubmitReservation);
             this.Name = "CreateReservationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "D";
+            this.Text = "Create Reservation";
             this.Load += new System.EventHandler(this.CreateReservationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

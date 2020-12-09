@@ -100,7 +100,7 @@ namespace GUI_Draft
 
                     MessageBox.Show("No row selected !");
                 }
-                else if (dataGridView1.CurrentCell.RowIndex > 0)
+                else 
                 {
 
                     int selectedIndex = dataGridView1.SelectedRows[0].Index;

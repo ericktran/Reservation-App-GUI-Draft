@@ -21,7 +21,7 @@ namespace GUI_Draft
         String showTime;
         int venueID;
         String artist;
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John Ly\Desktop\GUI Draft\GUI Draft\ArtistLogInDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+        
 
         public CreateReservationForm()
         {
@@ -56,9 +56,9 @@ namespace GUI_Draft
 
         private void CreateReservationForm_Load(object sender, EventArgs e)
         {
-            con.Open();
+            LogIn.con.Open();
             String query = "Select * FROM dbo.Employee WHERE EmployeeID = '" + LogIn.UsernameLabelTxt + "' AND EmployeeisManager = 1";
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, con);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, LogIn.con);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             if (dataTable.Rows.Count == 1) 
@@ -69,21 +69,21 @@ namespace GUI_Draft
             {
                 adminCheck = false;
             }
-            con.Close();
+            LogIn.con.Close();
         }
         private void SubmitReservation_Click(object sender, EventArgs e)
         {
-            con.Open();
+            LogIn.con.Open();
             artist = ArtistNameText.Text;
-            venueID = VenueSelection.SelectedIndex;
+            venueID = VenueSelection.SelectedIndex + 1;
             string venue = VenueSelection.SelectedItem.ToString();
             showDateTime = DateTime.Parse(showDate + " " + showTime);//, "dd/MM/yy h:mm tt", CultureInfo.InvariantCulture);
-            SqlCommand cmd = con.CreateCommand();
+            SqlCommand cmd = LogIn.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "Insert into dbo.PendingReservations([ArtistID],[VenueID],[EventDateTime]) values ('" + artist +"','" + venueID + "','"+ showDateTime + "')";
             cmd.ExecuteNonQuery();
             MessageBox.Show(string.Format("{0} {1} {2}", artist, venue, showDateTime), "Reservation Confirmation", MessageBoxButtons.OK);
-            con.Close();
+            LogIn.con.Close();
         }
     }
 }

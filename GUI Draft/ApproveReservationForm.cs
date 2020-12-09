@@ -68,6 +68,8 @@ namespace GUI_Draft
 
         private void Remove_Click(object sender, EventArgs e)
         {
+
+            //Fix This;
             String remove = "DELETE FROM dbo.PendingReservations WHERE PendingID = @rowID";
 
             using (SqlCommand deleteRecord = new SqlCommand(remove, LogIn.con))
@@ -78,7 +80,7 @@ namespace GUI_Draft
 
                     MessageBox.Show("No row selected !");
                 }
-                else if (dataGridView1.CurrentCell.RowIndex > 0)
+                else
                 {
 
                     int selectedIndex = dataGridView1.SelectedRows[0].Index;
